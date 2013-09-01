@@ -35,6 +35,10 @@ void     shell_wm_completed_maximize         (ShellWM         *wm,
                                               MetaWindowActor *actor);
 void     shell_wm_completed_unmaximize       (ShellWM         *wm,
                                               MetaWindowActor *actor);
+void     shell_wm_completed_fullscreen       (ShellWM         *wm,
+                                              MetaWindowActor *actor);
+void     shell_wm_completed_unfullscreen     (ShellWM         *wm,
+                                              MetaWindowActor *actor);
 void     shell_wm_completed_map              (ShellWM         *wm,
                                               MetaWindowActor *actor);
 void     shell_wm_completed_destroy          (ShellWM         *wm,

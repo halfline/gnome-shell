@@ -24,6 +24,14 @@ void _shell_wm_unmaximize (ShellWM         *wm,
                            gint             y,
                            gint             width,
                            gint             height);
+void _shell_wm_fullscreen   (ShellWM         *wm,
+                             MetaWindowActor *actor,
+                             MetaRectangle   *old_rect,
+                             MetaRectangle   *target_rect);
+void _shell_wm_unfullscreen (ShellWM         *wm,
+                             MetaWindowActor *actor,
+                             MetaRectangle   *old_rect,
+                             MetaRectangle   *target_rect);
 void _shell_wm_map        (ShellWM         *wm,
                            MetaWindowActor *actor);
 void _shell_wm_destroy    (ShellWM         *wm,

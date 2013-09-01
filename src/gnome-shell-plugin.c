@@ -54,6 +54,14 @@ static void gnome_shell_plugin_unmaximize       (MetaPlugin          *plugin,
                                                  gint                 y,
                                                  gint                 width,
                                                  gint                 height);
+static void gnome_shell_plugin_fullscreen       (MetaPlugin          *plugin,
+                                                 MetaWindowActor     *actor,
+                                                 MetaRectangle       *old_rect,
+                                                 MetaRectangle       *target_rect);
+static void gnome_shell_plugin_unfullscreen     (MetaPlugin          *plugin,
+                                                 MetaWindowActor     *actor,
+                                                 MetaRectangle       *old_rect,
+                                                 MetaRectangle       *target_rect);
 static void gnome_shell_plugin_map              (MetaPlugin          *plugin,
                                                  MetaWindowActor     *actor);
 static void gnome_shell_plugin_destroy          (MetaPlugin          *plugin,
@@ -136,6 +144,8 @@ gnome_shell_plugin_class_init (GnomeShellPluginClass *klass)
   plugin_class->unminimize       = gnome_shell_plugin_unminimize;
   plugin_class->maximize         = gnome_shell_plugin_maximize;
   plugin_class->unmaximize       = gnome_shell_plugin_unmaximize;
+  plugin_class->fullscreen       = gnome_shell_plugin_fullscreen;
+  plugin_class->unfullscreen     = gnome_shell_plugin_unfullscreen;
   plugin_class->destroy          = gnome_shell_plugin_destroy;
 
   plugin_class->switch_workspace = gnome_shell_plugin_switch_workspace;
@@ -302,6 +312,26 @@ gnome_shell_plugin_unmaximize (MetaPlugin         *plugin,
 {
   _shell_wm_unmaximize (get_shell_wm (),
                         actor, x, y, width, height);
+}
+
+static void
+gnome_shell_plugin_fullscreen (MetaPlugin         *plugin,
+                               MetaWindowActor    *actor,
+                               MetaRectangle      *old_rect,
+                               MetaRectangle      *target_rect)
+{
+  _shell_wm_fullscreen (get_shell_wm (),
+                        actor, old_rect, target_rect);
+}
+
+static void
+gnome_shell_plugin_unfullscreen (MetaPlugin         *plugin,
+                                 MetaWindowActor    *actor,
+                                 MetaRectangle      *old_rect,
+                                 MetaRectangle      *target_rect)
+{
+  _shell_wm_unfullscreen (get_shell_wm (),
+                          actor, old_rect, target_rect);
 }
 
 static void

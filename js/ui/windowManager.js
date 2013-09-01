@@ -643,6 +643,8 @@ const WindowManager = new Lang.Class({
             this._unmaximizeWindowDone(shellwm, actor);
             this._mapWindowDone(shellwm, actor);
             this._destroyWindowDone(shellwm, actor);
+            this._fullscreenWindowDone(shellwm, actor);
+            this._unfullscreenWindowDone(shellwm, actor);
         }));
 
         this._shellwm.connect('switch-workspace', Lang.bind(this, this._switchWorkspace));
@@ -653,6 +655,8 @@ const WindowManager = new Lang.Class({
         this._shellwm.connect('unminimize', Lang.bind(this, this._unminimizeWindow));
         this._shellwm.connect('maximize', Lang.bind(this, this._maximizeWindow));
         this._shellwm.connect('unmaximize', Lang.bind(this, this._unmaximizeWindow));
+        this._shellwm.connect('fullscreen', Lang.bind(this, this._fullscreenWindow));
+        this._shellwm.connect('unfullscreen', Lang.bind(this, this._unfullscreenWindow));
         this._shellwm.connect('map', Lang.bind(this, this._mapWindow));
         this._shellwm.connect('destroy', Lang.bind(this, this._destroyWindow));
         this._shellwm.connect('filter-keybinding', Lang.bind(this, this._filterKeybinding));
@@ -1178,6 +1182,124 @@ const WindowManager = new Lang.Class({
     },
 
     _unmaximizeWindowDone : function(shellwm, actor) {
+    },
+
+    _fullscreenWindow: function(shellwm, actor, oldRect, targetRect) {
+        let types = [Meta.WindowType.NORMAL];
+        if (!this._shouldAnimateActor(actor, types)) {
+            shellwm.completed_fullscreen(actor);
+            return;
+        }
+
+        let actorContent = Shell.util_get_content_for_window_actor(actor, oldRect);
+        let actorClone = new St.Widget({ content: actorContent });
+        actorClone.set_offscreen_redirect(Clutter.OffscreenRedirect.ALWAYS);
+        actorClone.set_position(oldRect.x, oldRect.y);
+        actorClone.set_size(oldRect.width, oldRect.height);
+        Main.uiGroup.add_actor(actorClone);
+
+        actor.__fullscreenClone = actorClone;
+
+        let scaleX = targetRect.width / oldRect.width;
+        let scaleY = targetRect.height / oldRect.height;
+
+        Tweener.addTween(actorClone,
+                         { x: targetRect.x,
+                           y: targetRect.y,
+                           scaleX: scaleX,
+                           scaleY: scaleY,
+                           opacity: 0,
+                           time: WINDOW_ANIMATION_TIME,
+                           transition: 'easeOutQuad',
+                           onComplete: this._fullscreenWindowDone,
+                           onCompleteScope: this,
+                           onCompleteParams: [shellwm, actor]
+                         });
+
+        actor.translation_x = actor.x;
+        actor.translation_y = actor.y;
+        actor.scaleX = 1 / scaleX;
+        actor.scaleY = 1 / scaleY;
+
+        Tweener.addTween(actor,
+                         { scaleX: 1.0,
+                           scaleY: 1.0,
+                           translation_x: 0,
+                           translation_y: 0,
+                           time: WINDOW_ANIMATION_TIME,
+                           transition: 'easeOutQuad'
+                         });
+
+        shellwm.completed_fullscreen(actor);
+    },
+
+    _fullscreenWindowDone: function(shellwm, actor) {
+        Tweener.removeTweens(actor);
+
+        let actorClone = actor.__fullscreenClone;
+        if (actorClone) {
+            actorClone.destroy();
+            delete actor.__fullscreenClone;
+        }
+    },
+
+    _unfullscreenWindow: function(shellwm, actor, oldRect, targetRect) {
+        let types = [Meta.WindowType.NORMAL];
+        if (!this._shouldAnimateActor(actor, types)) {
+            shellwm.completed_unfullscreen(actor);
+            return;
+        }
+
+        let actorContent = Shell.util_get_content_for_window_actor(actor, oldRect);
+        let actorClone = new St.Widget({ content: actorContent });
+        actorClone.set_offscreen_redirect(Clutter.OffscreenRedirect.ALWAYS);
+        actorClone.set_position(oldRect.x, oldRect.y);
+        actorClone.set_size(oldRect.width, oldRect.height);
+        Main.uiGroup.add_actor(actorClone);
+
+        actor.__unfullscreenClone = actorClone;
+
+        let scaleX = targetRect.width / oldRect.width;
+        let scaleY = targetRect.height / oldRect.height;
+
+        Tweener.addTween(actorClone,
+                         { x: targetRect.x,
+                           y: targetRect.y,
+                           scaleX: scaleX,
+                           scaleY: scaleY,
+                           opacity: 0,
+                           time: WINDOW_ANIMATION_TIME,
+                           transition: 'easeOutQuad',
+                           onComplete: this._unfullscreenWindowDone,
+                           onCompleteScope: this,
+                           onCompleteParams: [shellwm, actor]
+                         });
+
+        actor.translation_x = -actor.x;
+        actor.translation_y = -actor.y;
+        actor.scaleX = 1 / scaleX;
+        actor.scaleY = 1 / scaleY;
+
+        Tweener.addTween(actor,
+                         { scaleX: 1.0,
+                           scaleY: 1.0,
+                           translation_x: 0,
+                           translation_y: 0,
+                           time: WINDOW_ANIMATION_TIME,
+                           transition: 'easeOutQuad'
+                         });
+
+        shellwm.completed_unfullscreen(actor);
+    },
+
+    _unfullscreenWindowDone: function(shellwm, actor) {
+        Tweener.removeTweens(actor);
+
+        let actorClone = actor.__unfullscreenClone;
+        if (actorClone) {
+            actorClone.destroy();
+            delete actor.__unfullscreenClone;
+        }
     },
 
     _hasAttachedDialogs: function(window, ignoreWindow) {

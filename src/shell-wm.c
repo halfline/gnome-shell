@@ -22,6 +22,8 @@ enum
   UNMINIMIZE,
   MAXIMIZE,
   UNMAXIMIZE,
+  FULLSCREEN,
+  UNFULLSCREEN,
   MAP,
   DESTROY,
   SWITCH_WORKSPACE,
@@ -90,6 +92,22 @@ shell_wm_class_init (ShellWMClass *klass)
                   NULL, NULL, NULL,
                   G_TYPE_NONE, 5,
                   META_TYPE_WINDOW_ACTOR, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
+  shell_wm_signals[FULLSCREEN] =
+    g_signal_new ("fullscreen",
+                  G_TYPE_FROM_CLASS (klass),
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL, NULL, NULL,
+                  G_TYPE_NONE, 3,
+                  META_TYPE_WINDOW_ACTOR, META_TYPE_RECTANGLE, META_TYPE_RECTANGLE);
+  shell_wm_signals[UNFULLSCREEN] =
+    g_signal_new ("unfullscreen",
+                  G_TYPE_FROM_CLASS (klass),
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL, NULL, NULL,
+                  G_TYPE_NONE, 3,
+                  META_TYPE_WINDOW_ACTOR, META_TYPE_RECTANGLE, META_TYPE_RECTANGLE);
   shell_wm_signals[MAP] =
     g_signal_new ("map",
                   G_TYPE_FROM_CLASS (klass),
@@ -249,6 +267,34 @@ shell_wm_completed_unmaximize (ShellWM         *wm,
 }
 
 /**
+ * shell_wm_completed_fullscreen:
+ * @wm: the ShellWM
+ * @actor: the MetaWindowActor actor
+ *
+ * The plugin must call this when it has completed a window fullscreen effect.
+ **/
+void
+shell_wm_completed_fullscreen (ShellWM         *wm,
+                               MetaWindowActor *actor)
+{
+  meta_plugin_fullscreen_completed (wm->plugin, actor);
+}
+
+/**
+ * shell_wm_completed_unfullscreen:
+ * @wm: the ShellWM
+ * @actor: the MetaWindowActor actor
+ *
+ * The plugin must call this when it has completed a window unfullscreen effect.
+ **/
+void
+shell_wm_completed_unfullscreen (ShellWM         *wm,
+                                 MetaWindowActor *actor)
+{
+  meta_plugin_unfullscreen_completed (wm->plugin, actor);
+}
+
+/**
  * shell_wm_completed_map:
  * @wm: the ShellWM
  * @actor: the MetaWindowActor actor
@@ -378,6 +424,24 @@ _shell_wm_unmaximize (ShellWM         *wm,
                       int              target_height)
 {
   g_signal_emit (wm, shell_wm_signals[UNMAXIMIZE], 0, actor, target_x, target_y, target_width, target_height);
+}
+
+void
+_shell_wm_fullscreen (ShellWM         *wm,
+                      MetaWindowActor *actor,
+                      MetaRectangle   *old_rect,
+                      MetaRectangle   *target_rect)
+{
+  g_signal_emit (wm, shell_wm_signals[FULLSCREEN], 0, actor, old_rect, target_rect);
+}
+
+void
+_shell_wm_unfullscreen (ShellWM         *wm,
+                        MetaWindowActor *actor,
+                        MetaRectangle   *old_rect,
+                        MetaRectangle   *target_rect)
+{
+  g_signal_emit (wm, shell_wm_signals[UNFULLSCREEN], 0, actor, old_rect, target_rect);
 }
 
 void
