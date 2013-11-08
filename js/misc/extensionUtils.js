@@ -15,7 +15,8 @@ const FileUtils = imports.misc.fileUtils;
 
 const ExtensionType = {
     SYSTEM: 1,
-    PER_USER: 2
+    PER_USER: 2,
+    SESSION_MODE: 3
 };
 
 // Maps uuid -> metadata object
