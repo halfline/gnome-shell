@@ -713,6 +713,11 @@ StScrollBar StButton#vhandle:active {
     icon-shadow: black 0px 2px 2px;
 }
 
+.panel-logo-icon {
+  padding-right: .4em;
+  icon-size: 1em;
+}
+
 .panel-menu {
     -boxpointer-gap: 4px;
 }
