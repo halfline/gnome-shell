@@ -99,8 +99,10 @@ const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GnomeDesktop = imports.gi.GnomeDesktop;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 const Meta = imports.gi.Meta;
 const Signals = imports.signals;
+const System = imports.system;
 
 const Main = imports.ui.main;
 const Params = imports.misc.params;
@@ -202,6 +204,14 @@ const BackgroundCache = new Lang.Class({
             if (source._useCount == 0) {
                 delete this._backgroundSources[settingsSchema];
                 source.destroy();
+
+                if (!this._gcId)
+                    this._gcId = Mainloop.idle_add(Lang.bind(this,
+                        function() {
+                            System.gc();
+                            this._gcId = 0;
+                            return false;
+                        }));
             }
         }
     }
