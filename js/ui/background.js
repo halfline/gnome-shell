@@ -136,6 +136,7 @@ const BackgroundCache = new Lang.Class({
         this._pendingFileLoads = [];
         this._fileMonitors = {};
         this._backgroundSources = {};
+        this._animations = {};
     },
 
     monitorFile: function(filename) {
@@ -154,12 +155,13 @@ const BackgroundCache = new Lang.Class({
 
     getAnimation: function(params) {
         params = Params.parse(params, { filename: null,
+                                        settingsSchema: null,
                                         onLoaded: null });
 
-        if (this._animationFilename == params.filename) {
+        if (this._animations[params.settingsSchema] && this._animations[params.settingsSchema].filename == params.filename) {
             if (params.onLoaded) {
                 let id = GLib.idle_add(GLib.PRIORITY_DEFAULT, Lang.bind(this, function() {
-                    params.onLoaded(this._animation);
+                    params.onLoaded(this._animations[params.settingsSchema]);
                     return GLib.SOURCE_REMOVE;
                 }));
                 GLib.Source.set_name_by_id(id, '[gnome-shell] params.onLoaded');
@@ -170,12 +172,11 @@ const BackgroundCache = new Lang.Class({
         let animation = new Animation({ filename: params.filename });
 
         animation.load(Lang.bind(this, function() {
-                           this._animationFilename = params.filename;
-                           this._animation = animation;
+                           this._animations[params.settingsSchema] = animation;
 
                            if (params.onLoaded) {
                                let id = GLib.idle_add(GLib.PRIORITY_DEFAULT, Lang.bind(this, function() {
-                                   params.onLoaded(this._animation);
+                                   params.onLoaded(this._animations[params.settingsSchema]);
                                    return GLib.SOURCE_REMOVE;
                                }));
                                GLib.Source.set_name_by_id(id, '[gnome-shell] params.onLoaded');
@@ -402,6 +403,7 @@ const Background = new Lang.Class({
 
     _loadAnimation: function(filename) {
         this._cache.getAnimation({ filename: filename,
+                                   settingsSchema: this._settings.schema_id,
                                              onLoaded: Lang.bind(this, function(animation) {
                                                  this._animation = animation;
 
