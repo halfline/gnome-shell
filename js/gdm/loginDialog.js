@@ -740,6 +740,7 @@ const LoginDialog = new Lang.Class({
     },
 
     _fadeInBannerView: function() {
+        this._bannerView.show();
         Tweener.addTween(this._bannerView,
                          { opacity: 255,
                            time: _FADE_ANIMATION_TIME,
@@ -749,6 +750,7 @@ const LoginDialog = new Lang.Class({
     _hideBannerView: function() {
         Tweener.removeTweens(this._bannerView);
         this._bannerView.opacity = 0;
+        this._bannerView.hide();
     },
 
     _updateLogoTexture: function(cache, uri) {
