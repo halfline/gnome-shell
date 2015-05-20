@@ -420,7 +420,7 @@ shell_app_get_name (ShellApp *app)
       MetaWindow *window = window_backed_app_get_window (app);
       const char *name;
 
-      name = meta_window_get_wm_class (window);
+      name = meta_window_get_title (window);
       if (!name)
         name = C_("program", "Unknown");
       return name;
