@@ -2407,10 +2407,6 @@ StScrollBar StButton#vhandle:active {
     border: 2px solid #bbbbbb;
 }
 
-.login-dialog-banner {
-    color: #666666;
-}
-
 .login-dialog {
     /* Reset border and background */
     border: none;
