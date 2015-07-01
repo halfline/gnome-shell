@@ -414,6 +414,11 @@ const ShellUserVerifier = new Lang.Class({
             this._defaultService = SMARTCARD_SERVICE_NAME;
         else if (this._haveFingerprintReader)
             this._defaultService = FINGERPRINT_SERVICE_NAME;
+
+        if (!this._defaultService) {
+            log("no authentication service is enabled, using password authentication");
+            this._defaultService = PASSWORD_SERVICE_NAME;
+        }
     },
 
     _startService: function(serviceName) {
