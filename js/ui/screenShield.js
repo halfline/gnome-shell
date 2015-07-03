@@ -513,8 +513,10 @@ const ScreenShield = new Lang.Class({
         this._smartcardManager = SmartcardManager.getSmartcardManager();
         this._smartcardManager.connect('smartcard-inserted',
                                        Lang.bind(this, function(manager, token) {
-                                           if (this._isLocked && token.UsedToLogin)
+                                           if (this._isLocked && token.UsedToLogin) {
+                                               this._wakeUpScreen();
                                                this._liftShield(true, 0);
+                                           }
                                        }));
 
         this._oVirtCredentialsManager = OVirt.getOVirtCredentialsManager();
