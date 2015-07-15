@@ -434,7 +434,7 @@ const AuthPrompt = new Lang.Class({
         this.verificationStatus = AuthPromptStatus.NOT_VERIFYING;
         this.cancelButton.reactive = true;
 
-        if (oldStatus == AuthPromptStatus.VERIFYING)
+        if (this._userVerifier)
             this._userVerifier.cancel();
 
         this._queryingService = null;
