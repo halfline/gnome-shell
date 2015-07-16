@@ -1993,7 +1993,8 @@ const MessageTray = new Lang.Class({
 
     _checkTrayDwell: function(x, y) {
         let monitor = Main.layoutManager.bottomMonitor;
-        let shouldDwell = (x >= monitor.x && x <= monitor.x + monitor.width &&
+        let shouldDwell = monitor &&
+                          (x >= monitor.x && x <= monitor.x + monitor.width &&
                            y == monitor.y + monitor.height - 1);
         if (shouldDwell) {
             // We only set up dwell timeout when the user is not hovering over the tray
@@ -2432,7 +2433,8 @@ const MessageTray = new Lang.Class({
             let shouldShowNotification = (hasNotifications && this._trayState == State.HIDDEN && !this._traySummoned);
             let nextNotification = this._notificationQueue[0] || null;
             if (shouldShowNotification && nextNotification) {
-                let limited = this._busy || Main.layoutManager.bottomMonitor.inFullscreen;
+                let bottomMonitor = Main.layoutManager.bottomMonitor;
+                let limited = this._busy || (bottomMonitor && bottomMonitor.inFullscreen);
                 let showNextNotification = (!limited || nextNotification.forFeedback || nextNotification.urgency == Urgency.CRITICAL);
                 if (showNextNotification) {
                     let len = this._notificationQueue.length;
