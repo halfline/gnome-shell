@@ -106,7 +106,9 @@ const MonitorConstraint = new Lang.Class({
             return;
 
         let monitor;
-        if (this._primary) {
+        if (Main.layoutManager.monitors.length == 0) {
+            monitor = new Meta.Rectangle();
+        } else if (this._primary) {
             monitor = Main.layoutManager.primaryMonitor;
         } else {
             let index = Math.min(this._index, Main.layoutManager.monitors.length - 1);
@@ -297,7 +299,9 @@ const LayoutManager = new Lang.Class({
         for (let i = 0; i < nMonitors; i++)
             this.monitors.push(new Monitor(i, screen.get_monitor_geometry(i)));
 
-        if (nMonitors == 1) {
+        if (nMonitors == 0) {
+            this.primaryIndex = this.bottomIndex = -1;
+        } else if (nMonitors == 1) {
             this.primaryIndex = this.bottomIndex = 0;
         } else {
             // If there are monitors below the primary, then we need
@@ -311,8 +315,10 @@ const LayoutManager = new Lang.Class({
                 }
             }
         }
-        this.primaryMonitor = this.monitors[this.primaryIndex];
-        this.bottomMonitor = this.monitors[this.bottomIndex];
+        this.primaryMonitor = this.primaryIndex > -1 ? this.monitors[this.primaryIndex]
+                                                     : null;
+        this.bottomMonitor = this.bottomIndex > -1 ? this.monitors[this.bottomIndex]
+                                                   : null;
     },
 
     _updateHotCorners: function() {
@@ -423,6 +429,10 @@ const LayoutManager = new Lang.Class({
     },
 
     _updateKeyboardBox: function() {
+        this.keyboardBox.visible = this.keyboardMonitor != null;
+        if (!this.keyboardBox.visible)
+            return;
+
         this.keyboardBox.set_position(this.keyboardMonitor.x,
                                       this.keyboardMonitor.y + this.keyboardMonitor.height);
         this.keyboardBox.set_size(this.keyboardMonitor.width, -1);
@@ -432,17 +442,23 @@ const LayoutManager = new Lang.Class({
         this.screenShieldGroup.set_position(0, 0);
         this.screenShieldGroup.set_size(global.screen_width, global.screen_height);
 
-        this.panelBox.set_position(this.primaryMonitor.x, this.primaryMonitor.y);
-        this.panelBox.set_size(this.primaryMonitor.width, -1);
+        this.panelBox.visible = this.primaryMonitor != null;
+        if (this.panelBox.visible) {
+            this.panelBox.set_position(this.primaryMonitor.x, this.primaryMonitor.y);
+            this.panelBox.set_size(this.primaryMonitor.width, -1);
+        }
 
         if (this.keyboardIndex < 0)
             this.keyboardIndex = this.primaryIndex;
         else
             this._updateKeyboardBox();
 
-        this.trayBox.set_position(this.bottomMonitor.x,
-                                  this.bottomMonitor.y + this.bottomMonitor.height);
-        this.trayBox.set_size(this.bottomMonitor.width, -1);
+        this.trayBox.visible = this.bottomMonitor != null;
+        if (this.trayBox.visible) {
+            this.trayBox.set_position(this.bottomMonitor.x,
+                                      this.bottomMonitor.y + this.bottomMonitor.height);
+            this.trayBox.set_size(this.bottomMonitor.width, -1);
+        }
     },
 
     _panelBoxChanged: function() {
@@ -461,9 +477,8 @@ const LayoutManager = new Lang.Class({
             this._rightPanelBarrier = null;
         }
 
-        if (this.panelBox.height) {
-            let primary = this.primaryMonitor;
-
+        let primary = this.primaryMonitor;
+        if (this.panelBox.height && primary) {
             this._rightPanelBarrier = new Meta.Barrier({ display: global.display,
                                                          x1: primary.x + primary.width, y1: primary.y,
                                                          x2: primary.x + primary.width, y2: primary.y + this.panelBox.height,
@@ -486,13 +501,15 @@ const LayoutManager = new Lang.Class({
     },
 
     _updateTrayBarrier: function() {
-        let monitor = this.bottomMonitor;
-
         if (this._trayBarrier) {
             this._trayPressure.removeBarrier(this._trayBarrier);
             this._trayBarrier.destroy();
             this._trayBarrier = null;
         }
+
+        let monitor = this.bottomMonitor;
+        if (!monitor)
+            return;
 
         this._trayBarrier = new Meta.Barrier({ display: global.display,
                                                x1: monitor.x, x2: monitor.x + monitor.width,
@@ -544,7 +561,7 @@ const LayoutManager = new Lang.Class({
     },
 
     get keyboardMonitor() {
-        return this.monitors[this.keyboardIndex];
+        return this.keyboardIndex > -1 ? this.monitors[this.keyboardIndex] : null;
     },
 
     get focusIndex() {
@@ -558,7 +575,7 @@ const LayoutManager = new Lang.Class({
     },
 
     get focusMonitor() {
-        return this.monitors[this.focusIndex];
+        return this.focusIndex > -1 ? this.monitors[this.focusIndex] : null;
     },
 
     set keyboardIndex(v) {
@@ -613,7 +630,7 @@ const LayoutManager = new Lang.Class({
                                               reactive: true });
         this.addChrome(this._coverPane);
 
-        if (Meta.is_restart()) {
+        if (Meta.is_restart() || global.screen.get_n_monitors() == 0) {
             // On restart, we don't do an animation
         } else if (Main.sessionMode.isGreeter) {
             this.panelBox.translation_y = -this.panelBox.height;
@@ -654,7 +671,7 @@ const LayoutManager = new Lang.Class({
     },
 
     _startupAnimation: function() {
-        if (Meta.is_restart())
+        if (Meta.is_restart() || global.screen.get_n_monitors() == 0)
             this._startupAnimationComplete();
         else if (Main.sessionMode.isGreeter)
             this._startupAnimationGreeter();
@@ -885,6 +902,9 @@ const LayoutManager = new Lang.Class({
         global.window_group.visible = windowsVisible;
         global.top_window_group.visible = windowsVisible;
 
+        if (global.screen.get_n_monitors() == 0)
+            return;
+
         for (let i = 0; i < this._trackedActors.length; i++) {
             let actorData = this._trackedActors[i], visible;
             if (!actorData.trackFullscreen)
@@ -901,6 +921,9 @@ const LayoutManager = new Lang.Class({
     },
 
     getWorkAreaForMonitor: function(monitorIndex) {
+        if (monitorIndex < 0)
+            return new Meta.Rectangle();
+
         // Assume that all workspaces will have the same
         // struts and pick the first one.
         let ws = global.screen.get_workspace_by_index(0);
@@ -1008,6 +1031,8 @@ const LayoutManager = new Lang.Class({
                 // we don't create a strut for it at all.
                 let side;
                 let primary = this.primaryMonitor;
+                if (!primary)
+                    continue;
                 if (x1 <= primary.x && x2 >= primary.x + primary.width) {
                     if (y1 <= primary.y)
                         side = Meta.Side.TOP;
