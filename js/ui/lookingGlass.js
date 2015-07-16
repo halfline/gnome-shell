@@ -538,6 +538,8 @@ const Inspector = new Lang.Class({
             return;
 
         let primary = Main.layoutManager.primaryMonitor;
+        if (!primary)
+            return;
 
         let [minWidth, minHeight, natWidth, natHeight] =
             this._eventHandler.get_preferred_size();
@@ -1036,6 +1038,8 @@ const LookingGlass = new Lang.Class({
 
     _resize: function() {
         let primary = Main.layoutManager.primaryMonitor;
+        if (!primary)
+            return;
         let myWidth = primary.width * 0.7;
         let availableHeight = primary.height - Main.layoutManager.keyboardBox.height;
         let myHeight = Math.min(primary.height * 0.7, availableHeight * 0.9);
