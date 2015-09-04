@@ -169,7 +169,7 @@ StScrollBar StButton#vhandle:active {
 
 
 .popup-menu {
-    min-width: 200px;
+    min-width: 15em;
 }
 
 .popup-menu-arrow {
@@ -728,7 +728,7 @@ StScrollBar StButton#vhandle:active {
 }
 
 .aggregate-menu {
-    width: 360px;
+    width: 27em;
 }
 
 .aggregate-menu .popup-menu-icon {
@@ -1450,7 +1450,7 @@ StScrollBar StButton#vhandle:active {
 }
 
 .events-table {
-    width: 320px;
+    width: 24em;
     spacing-columns: 6pt;
     padding: 0 1.4em;
 }
