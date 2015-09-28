@@ -331,6 +331,8 @@ const ShellUserVerifier = new Lang.Class({
             else if (this._preemptingService == SMARTCARD_SERVICE_NAME)
                 this._preemptingService = null;
 
+            this._updateDefaultService();
+
             this.emit('smartcard-status-changed');
         }
     },
