@@ -113,6 +113,13 @@ const SmartcardManager = new Lang.Class({
             return false;
 
         return true;
+    },
+
+    loggedInWithToken: function() {
+        if (this._loginToken)
+            return true;
+
+        return false;
     }
 
 });
