@@ -185,7 +185,7 @@ var AuthPrompt = new Lang.Class({
 
         this._entry.clutter_text.connect('text-changed',
                                          Lang.bind(this, function() {
-                                             if (!this._userVerifier.hasPendingMessages)
+                                             if (!this._userVerifier.hasPendingMessages && this._queryingService && !this._preemptiveAnswer)
                                                  this._fadeOutMessage();
 
                                              this._updateNextButtonSensitivity(this._entry.text.length > 0 || this.verificationStatus == AuthPromptStatus.VERIFYING);
