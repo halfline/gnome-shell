@@ -2455,6 +2455,11 @@ StScrollBar StButton#vhandle:active {
     background-size: contain;
 }
 
+.login-dialog-prompt-layout .login-dialog-timed-login-indicator {
+    height: 2px;
+    background-color: #8b8b8b;
+}
+
 .login-dialog-user-list-item .login-dialog-timed-login-indicator {
     background-color: rgba(0,0,0,0.0);
     height: 2px;
