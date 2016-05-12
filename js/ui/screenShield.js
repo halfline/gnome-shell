@@ -1125,8 +1125,12 @@ const ScreenShield = new Lang.Class({
         let prevIsActive = this._isActive;
         this._isActive = true;
 
-        if (prevIsActive != this._isActive)
+        if (prevIsActive != this._isActive) {
             this.emit('active-changed');
+
+            if (this._loginSession)
+                this._loginSession.SetLockedHintRemote(this._isActive);
+        }
 
         if (this._aboutToSuspend)
             this._uninhibitSuspend();
@@ -1226,6 +1230,8 @@ const ScreenShield = new Lang.Class({
             this._activationTime = 0;
             this._isActive = false;
             this.emit('active-changed');
+            if (this._loginSession)
+                this._loginSession.SetLockedHintRemote(this._isActive);
             return;
         }
 
@@ -1272,6 +1278,8 @@ const ScreenShield = new Lang.Class({
         this._isLocked = false;
         this.emit('active-changed');
         this.emit('locked-changed');
+        if (this._loginSession)
+            this._loginSession.SetLockedHintRemote(this._isActive);
         global.set_runtime_state(LOCKED_STATE_STR, null);
     },
 
