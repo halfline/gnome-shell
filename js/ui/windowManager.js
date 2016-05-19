@@ -763,6 +763,18 @@ const WindowManager = new Lang.Class({
         this.setCustomKeybindingHandler('switch-windows-backward',
                                         Shell.KeyBindingMode.NORMAL,
                                         Lang.bind(this, this._startWindowSwitcher));
+        this.setCustomKeybindingHandler('cycle-windows',
+                                        Shell.KeyBindingMode.NORMAL,
+                                        Lang.bind(this, this._startWindowCycler));
+        this.setCustomKeybindingHandler('cycle-windows-backward',
+                                        Shell.KeyBindingMode.NORMAL,
+                                        Lang.bind(this, this._startWindowCycler));
+        this.setCustomKeybindingHandler('cycle-group',
+                                        Shell.KeyBindingMode.NORMAL,
+                                        Lang.bind(this, this._startGroupCycler));
+        this.setCustomKeybindingHandler('cycle-group-backward',
+                                        Shell.KeyBindingMode.NORMAL,
+                                        Lang.bind(this, this._startGroupCycler));
         this.setCustomKeybindingHandler('switch-panels',
                                         Shell.KeyBindingMode.NORMAL |
                                         Shell.KeyBindingMode.OVERVIEW |
@@ -1402,6 +1414,28 @@ const WindowManager = new Lang.Class({
             this._workspaceSwitcherPopup.destroy();
 
         let tabPopup = new AltTab.WindowSwitcherPopup();
+
+        if (!tabPopup.show(binding.is_reversed(), binding.get_name(), binding.get_mask()))
+            tabPopup.destroy();
+    },
+
+    _startWindowCycler : function(display, screen, window, binding) {
+        /* prevent a corner case where both popups show up at once */
+        if (this._workspaceSwitcherPopup != null)
+            this._workspaceSwitcherPopup.destroy();
+
+        let tabPopup = new AltTab.WindowCyclerPopup();
+
+        if (!tabPopup.show(binding.is_reversed(), binding.get_name(), binding.get_mask()))
+            tabPopup.destroy();
+    },
+
+    _startGroupCycler : function(display, screen, window, binding) {
+        /* prevent a corner case where both popups show up at once */
+        if (this._workspaceSwitcherPopup != null)
+            this._workspaceSwitcherPopup.destroy();
+
+        let tabPopup = new AltTab.GroupCyclerPopup();
 
         if (!tabPopup.show(binding.is_reversed(), binding.get_name(), binding.get_mask()))
             tabPopup.destroy();
