@@ -349,6 +349,7 @@ const ShellUserVerifier = new Lang.Class({
         try {
             this._clearUserVerifier();
             this._userVerifier = client.open_reauthentication_channel_finish(result);
+            this._userVerifier.set_default_timeout(GLib.MAXINT32);
         } catch(e if e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
             return;
         } catch(e if e.matches(Gio.DBusError, Gio.DBusError.ACCESS_DENIED) &&
@@ -373,6 +374,7 @@ const ShellUserVerifier = new Lang.Class({
         try {
             this._clearUserVerifier();
             this._userVerifier = client.get_user_verifier_finish(result);
+            this._userVerifier.set_default_timeout(GLib.MAXINT32);
         } catch(e if e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
             return;
         } catch(e) {
