@@ -424,6 +424,8 @@ const Arrow = new Lang.Class({
             this._shadowHelper = St.ShadowHelper.new(this._shadow);
         else
             this._shadowHelper = null;
+
+        this.parent();
     },
 
     vfunc_paint: function() {
