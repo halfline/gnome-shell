@@ -92,7 +92,8 @@ enum {
   PROP_ID,
   PROP_DBUS_ID,
   PROP_ACTION_GROUP,
-  PROP_MENU
+  PROP_MENU,
+  PROP_APP_INFO
 };
 
 enum {
@@ -130,6 +131,29 @@ shell_app_get_property (GObject    *gobject,
     case PROP_MENU:
       if (app->running_state)
         g_value_set_object (value, app->running_state->remote_menu);
+      break;
+    case PROP_APP_INFO:
+      if (app->info)
+        g_value_set_object (value, app->info);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (gobject, prop_id, pspec);
+      break;
+    }
+}
+
+static void
+shell_app_set_property (GObject      *gobject,
+                        guint         prop_id,
+                        const GValue *value,
+                        GParamSpec   *pspec)
+{
+  ShellApp *app = SHELL_APP (gobject);
+
+  switch (prop_id)
+    {
+    case PROP_APP_INFO:
+      _shell_app_set_app_info (app, g_value_get_object (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (gobject, prop_id, pspec);
@@ -952,9 +976,9 @@ _shell_app_new (GDesktopAppInfo *info)
 {
   ShellApp *app;
 
-  app = g_object_new (SHELL_TYPE_APP, NULL);
-
-  _shell_app_set_app_info (app, info);
+  app = g_object_new (SHELL_TYPE_APP,
+                      "app-info", info,
+                      NULL);
 
   return app;
 }
@@ -1530,6 +1554,7 @@ shell_app_class_init(ShellAppClass *klass)
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   gobject_class->get_property = shell_app_get_property;
+  gobject_class->set_property = shell_app_set_property;
   gobject_class->dispose = shell_app_dispose;
   gobject_class->finalize = shell_app_finalize;
 
@@ -1595,5 +1620,17 @@ shell_app_class_init(ShellAppClass *klass)
                                                         "The primary menu exported by the remote application",
                                                         G_TYPE_MENU_MODEL,
                                                         G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
+  /**
+   * ShellApp:app-info:
+   *
+   * The #GDesktopAppInfo associated with this ShellApp, if any.
+   */
+  g_object_class_install_property (gobject_class,
+                                   PROP_APP_INFO,
+                                   g_param_spec_object ("app-info",
+                                                        "DesktopAppInfo",
+                                                        "The DesktopAppInfo associated with this app",
+                                                        G_TYPE_DESKTOP_APP_INFO,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
 }
