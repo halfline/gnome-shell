@@ -2,8 +2,8 @@
 # Young-Ho Cha <ganadist@gmail.com>, 2009.
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2012.
 # Changwoo Ryu <cwryu@debian.org>, 2011-2014.
-#
-#
+# 
+# 
 # 주의 사항:
 # - 이 프로그램의 이름인 shell은 "셸"이라고 쓰고, "쉘"이라고 하지 않음.
 # - 용어:
@@ -12,21 +12,22 @@
 #   - VPN: 가상사설망
 #   - pairing (bluetooth 관련): 페어링
 #   - Wayland: 웨일랜드로 음역
-#
+# eukim <eukim@redhat.com>, 2016. #zanata
+# pnemade <pnemade@redhat.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"shell&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-13 07:37+0000\n"
-"PO-Revision-Date: 2014-09-18 01:41+0900\n"
-"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
-"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
-"Language: Korean\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-10 14:02+0530\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-05-24 05:39+0000\n"
+"Last-Translator: eukim <eukim@redhat.com>\n"
+"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
+"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Zanata 3.8.2\n"
 
 #: ../data/50-gnome-shell-system.xml.in.h:1
 msgid "System"
@@ -94,9 +95,8 @@ msgid ""
 "list. You can also manipulate this list with the EnableExtension and "
 "DisableExtension D-Bus methods on org.gnome.Shell."
 msgstr ""
-"그놈 셸 확장에는 UUID 속성이 있습니다. 이 키는 읽어들일 확장의 UUID를 나열합"
-"니다. 읽어들이려는 확장은 모두 이 목록에 들어 있어야 합니다. EnableExtension "
-"및 DisableExtension D-버스 메소드를 이용해 이 목록을 조작할 수도 있습니다."
+"그놈 셸 확장에는 UUID 속성이 있습니다. 이 키는 읽어들일 확장의 UUID를 나열합니다. 읽어들이려는 확장은 모두 이 목록에 들어 "
+"있어야 합니다. EnableExtension 및 DisableExtension D-버스 메소드를 이용해 이 목록을 조작할 수도 있습니다."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:5
 msgid "Disables the validation of extension version compatibility"
@@ -108,9 +108,8 @@ msgid ""
 "running version. Enabling this option will disable this check and try to "
 "load all extensions regardless of the versions they claim to support."
 msgstr ""
-"그놈 셸에서 현재 실행 중인 버전을 지원하는 확장 기능만 읽어들입니다. 이 옵션"
-"을 사용하면 이 버전 검사를 하지 않고, 지원한다고 지정된 버전에 관계없이 모든 "
-"확장 기능을 읽어들입니다."
+"그놈 셸에서 현재 실행 중인 버전을 지원하는 확장 기능만 읽어들입니다. 이 옵션을 사용하면 이 버전 검사를 하지 않고, 지원한다고 지정된 "
+"버전에 관계없이 모든 확장 기능을 읽어들입니다."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:7
 msgid "List of desktop file IDs for favorite applications"
@@ -146,16 +145,12 @@ msgstr "사용자 메뉴에 '로그아웃' 메뉴 항목을 항상 표시합니�
 msgid ""
 "This key overrides the automatic hiding of the 'Log out' menu item in single-"
 "user, single-session situations."
-msgstr ""
-"이 키를 설정하면, 단일 사용자 및 단일 세션에서 '로그아웃' 메뉴 항목 자동 감추"
-"기 기능을 사용하지 않습니다."
+msgstr "이 키를 설정하면, 단일 사용자 및 단일 세션에서 '로그아웃' 메뉴 항목 자동 감추기 기능을 사용하지 않습니다."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:15
 msgid ""
 "Whether to remember password for mounting encrypted or remote filesystems"
-msgstr ""
-"암호화 볼륨을 마운트하거나 원격 파일 시스템을 마운트할 때 암호를 저장할지 여"
-"부"
+msgstr "암호화 볼륨을 마운트하거나 원격 파일 시스템을 마운트할 때 암호를 저장할지 여부"
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:16
 msgid ""
@@ -164,9 +159,8 @@ msgid ""
 "'Remember Password' checkbox will be present. This key sets the default "
 "state of the checkbox."
 msgstr ""
-"암호화된 저장 장치나 원격 파일 시스템을 마운트하는 경우 암호를 입력해야 합니"
-"다. 암호를 저장할 수 있으면 '암호 저장' 확인란이 나타납니다. 이 키에서는 이 "
-"확인란의 기본 상태를 지정합니다."
+"암호화된 저장 장치나 원격 파일 시스템을 마운트하는 경우 암호를 입력해야 합니다. 암호를 저장할 수 있으면 '암호 저장' 확인란이 "
+"나타납니다. 이 키에서는 이 확인란의 기본 상태를 지정합니다."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:17
 msgid "Show the week date in the calendar"
@@ -191,6 +185,7 @@ msgstr "\"프로그램 보기\" 뷰를 여는 키 바인딩"
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:22
 msgid ""
 "Keybinding to open the \"Show Applications\" view of the Activities Overview."
+""
 msgstr "현재 활동 요약의 \"프로그램 보기\" 뷰를 여는 키 바인딩."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:23
@@ -219,9 +214,9 @@ msgstr "현재 알림에 포커스하는 키 바인딩."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:29
 msgid ""
-"Keybinding that pauses and resumes all running tweens, for debugging purposes"
-msgstr ""
-"실행 중인 모든 하위 프로세스를 일시 중지하고 계속 하는 키 바인딩, 디버깅 목적"
+"Keybinding that pauses and resumes all running tweens, for debugging "
+"purposes"
+msgstr "실행 중인 모든 하위 프로세스를 일시 중지하고 계속 하는 키 바인딩, 디버깅 목적"
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:30
 msgid "Which keyboard to use"
@@ -239,9 +234,7 @@ msgstr "프로그램 전환을 현재 작업 공간에만 한정."
 msgid ""
 "If true, only applications that have windows on the current workspace are "
 "shown in the switcher. Otherwise, all applications are included."
-msgstr ""
-"참이면, 현재 작업 공간에 창이 있는 프로그램만 프로그램 전환 창에 표시합니다. "
-"참이 아니면 모든 프로그램을 표시합니다."
+msgstr "참이면, 현재 작업 공간에 창이 있는 프로그램만 프로그램 전환 창에 표시합니다. 참이 아니면 모든 프로그램을 표시합니다."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:34
 msgid "The application icon mode."
@@ -250,19 +243,17 @@ msgstr "프로그램 아이콘 모드."
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:35
 msgid ""
 "Configures how the windows are shown in the switcher. Valid possibilities "
-"are 'thumbnail-only' (shows a thumbnail of the window), 'app-icon-"
-"only' (shows only the application icon) or 'both'."
+"are 'thumbnail-only' (shows a thumbnail of the window), 'app-icon-only' "
+"(shows only the application icon) or 'both'."
 msgstr ""
-"창 전환에서 창이 어떻게 표시될지 설정합니다. 가능한 값은: 'thumbnail-only'(창"
-"의 섬네일만 표시), 'app-icon-only'(프로그램 아이콘만 표시), 'both'(모두)."
+"창 전환에서 창이 어떻게 표시될지 설정합니다. 가능한 값은: 'thumbnail-only'(창의 섬네일만 표시), 'app-icon-"
+"only'(프로그램 아이콘만 표시), 'both'(모두)."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:36
 msgid ""
 "If true, only windows from the current workspace are shown in the switcher. "
 "Otherwise, all windows are included."
-msgstr ""
-"참이면, 현재 작업 공간에 창이 있는 창만 창 전환 창에 표시합니다. 거짓이면 모"
-"든 창을 표시합니다."
+msgstr "참이면, 현재 작업 공간에 창이 있는 창만 창 전환 창에 표시합니다. 거짓이면 모든 창을 표시합니다."
 
 #: ../data/org.gnome.shell.gschema.xml.in.in.h:37
 msgid "Attach modal dialog to the parent window"
@@ -295,7 +286,7 @@ msgid "Captive Portal"
 msgstr "종속 포털"
 
 #: ../js/extensionPrefs/main.js:123
-#, javascript-format
+#, c-format
 msgid "There was an error loading the preferences dialog for %s:"
 msgstr "%s에 대한 기본 설정 대화상자를 불러오는데 오류가 발생했습니다:"
 
@@ -303,54 +294,68 @@ msgstr "%s에 대한 기본 설정 대화상자를 불러오는데 오류가 발
 msgid "GNOME Shell Extensions"
 msgstr "그놈 셸 확장"
 
-#: ../js/gdm/authPrompt.js:147 ../js/ui/components/networkAgent.js:143
+#: ../js/gdm/authPrompt.js:159 ../js/ui/components/networkAgent.js:143
 #: ../js/ui/components/polkitAgent.js:166 ../js/ui/endSessionDialog.js:452
 #: ../js/ui/extensionDownloader.js:195 ../js/ui/shellMountOperation.js:399
 #: ../js/ui/status/network.js:915
 msgid "Cancel"
 msgstr "취소"
 
-#: ../js/gdm/authPrompt.js:169 ../js/gdm/authPrompt.js:217
+#: ../js/gdm/authPrompt.js:181 ../js/gdm/authPrompt.js:228
+#: ../js/gdm/authPrompt.js:466
 msgid "Next"
 msgstr "다음"
 
-#: ../js/gdm/authPrompt.js:213 ../js/ui/shellMountOperation.js:403
+#: ../js/gdm/authPrompt.js:224 ../js/ui/shellMountOperation.js:403
 #: ../js/ui/unlockDialog.js:59
 msgid "Unlock"
 msgstr "잠금 풀기"
 
-#: ../js/gdm/authPrompt.js:215
+#: ../js/gdm/authPrompt.js:226
 msgctxt "button"
 msgid "Sign In"
 msgstr "로그인"
 
-#: ../js/gdm/loginDialog.js:269
+#: ../js/gdm/loginDialog.js:297
 msgid "Choose Session"
 msgstr "세션 선택"
 
-#: ../js/gdm/loginDialog.js:429
+#. translators: this message is shown below the user list on the
+#. login screen. It can be activated to reveal an entry for
+#. manually entering the username.
+#: ../js/gdm/loginDialog.js:458
 msgid "Not listed?"
 msgstr "목록에 없습니까?"
 
-#: ../js/gdm/loginDialog.js:614
-#, javascript-format
+#. Translators: this message is shown below the username entry field
+#. to clue the user in on how to login to the local network realm
+#: ../js/gdm/loginDialog.js:859
+#, c-format
 msgid "(e.g., user or %s)"
 msgstr "(예를 들어, 사용자 또는 %s)"
 
-#: ../js/gdm/loginDialog.js:619 ../js/ui/components/networkAgent.js:269
+#. TTLS and PEAP are actually much more complicated, but this complication
+#. is not visible here since we only care about phase2 authentication
+#. (and don't even care of which one)
+#: ../js/gdm/loginDialog.js:864 ../js/ui/components/networkAgent.js:269
 #: ../js/ui/components/networkAgent.js:287
 msgid "Username: "
 msgstr "사용자 이름: "
 
-#: ../js/gdm/loginDialog.js:922
+#: ../js/gdm/loginDialog.js:1193
 msgid "Login Window"
 msgstr "로그인 창"
 
-#: ../js/gdm/util.js:323
+#: ../js/gdm/util.js:344
 msgid "Authentication error"
 msgstr "인증 오류"
 
-#: ../js/gdm/util.js:453
+#. We don't show fingerprint messages directly since it's
+#. not the main auth service. Instead we use the messages
+#. as a cue to display our own message.
+#. Translators: this message is shown below the password entry field
+#. to indicate the user can swipe their finger instead
+#: ../js/gdm/util.js:483
 msgid "(or swipe finger)"
 msgstr "(또는 지문을 문지르십시오)"
 
@@ -358,59 +363,63 @@ msgstr "(또는 지문을 문지르십시오)"
 msgid "Command not found"
 msgstr "명령이 없습니다"
 
+#. Replace "Error invoking GLib.shell_parse_argv: " with
+#. something nicer
 #: ../js/misc/util.js:148
 msgid "Could not parse command:"
 msgstr "명령어를 파싱할 수 없습니다:"
 
 #: ../js/misc/util.js:156
-#, javascript-format
+#, c-format
 msgid "Execution of “%s” failed:"
 msgstr "“%s” 실행이 실패했습니다:"
 
+#. TRANSLATORS: this is the title of the wifi captive portal login
+#. window, until we know the title of the actual login page
 #: ../js/portalHelper/main.js:85
 msgid "Web Authentication Redirect"
 msgstr "웹 인증 리다이렉트"
 
-#: ../js/ui/appDisplay.js:772
+#: ../js/ui/appDisplay.js:773
 msgid "Frequently used applications will appear here"
 msgstr "자주 사용하는 프로그램이 여기 나타납니다"
 
-#: ../js/ui/appDisplay.js:883
+#: ../js/ui/appDisplay.js:884
 msgid "Frequent"
 msgstr "자주"
 
-#: ../js/ui/appDisplay.js:890
+#: ../js/ui/appDisplay.js:891
 msgid "All"
 msgstr "모두"
 
-#: ../js/ui/appDisplay.js:1789
+#: ../js/ui/appDisplay.js:1795
 msgid "New Window"
 msgstr "새 창"
 
-#: ../js/ui/appDisplay.js:1815 ../js/ui/dash.js:285
+#: ../js/ui/appDisplay.js:1821 ../js/ui/dash.js:285
 msgid "Remove from Favorites"
 msgstr "즐겨찾기에서 제거"
 
-#: ../js/ui/appDisplay.js:1821
+#: ../js/ui/appDisplay.js:1827
 msgid "Add to Favorites"
 msgstr "즐겨찾기에 추가"
 
 # 주의: "Show ..." 형태지만 보이기로 번역하지 않는다
-#: ../js/ui/appDisplay.js:1830
+#: ../js/ui/appDisplay.js:1836
 msgid "Show Details"
 msgstr "자세히 보기"
 
-#: ../js/ui/appFavorites.js:124
-#, javascript-format
+#: ../js/ui/appFavorites.js:133
+#, c-format
 msgid "%s has been added to your favorites."
 msgstr "%s 프로그램을 즐겨찾기에 추가했습니다."
 
-#: ../js/ui/appFavorites.js:158
-#, javascript-format
+#: ../js/ui/appFavorites.js:167
+#, c-format
 msgid "%s has been removed from your favorites."
 msgstr "%s 프로그램을 즐겨찾기에서 제거했습니다."
 
-#: ../js/ui/backgroundMenu.js:19 ../js/ui/panel.js:813
+#: ../js/ui/backgroundMenu.js:19 ../js/ui/panel.js:820
 #: ../js/ui/status/system.js:337
 msgid "Settings"
 msgstr "설정"
@@ -421,69 +430,69 @@ msgstr "배경 바꾸기…"
 
 #. Translators: Shown in calendar event list for all day events
 #. * Keep it short, best if you can use less then 10 characters
-#. */
-#: ../js/ui/calendar.js:67
+#. 
+#: ../js/ui/calendar.js:70
 msgctxt "event list time"
 msgid "All Day"
 msgstr "종일"
 
 #. Translators: Shown in calendar event list, if 24h format,
-#. \u2236 is a ratio character, similar to : */
-#: ../js/ui/calendar.js:73
+#. \u2236 is a ratio character, similar to :
+#: ../js/ui/calendar.js:77
 msgctxt "event list time"
-msgid "%H∶%M"
-msgstr "%H∶%M"
+msgid "%H\\u2236%M"
+msgstr "%H\\u2236%M"
 
 #. Translators: Shown in calendar event list, if 12h format,
 #. \u2236 is a ratio character, similar to : and \u2009 is
-#. a thin space */
-#: ../js/ui/calendar.js:82
+#. a thin space
+#: ../js/ui/calendar.js:86
 msgctxt "event list time"
-msgid "%l∶%M %p"
-msgstr "%p %l∶%M"
+msgid "%l\\u2236%M\\u2009%p"
+msgstr "%l\\u2236%M\\u2009%p"
 
 #. Translators: Calendar grid abbreviation for Sunday.
 #. *
 #. * NOTE: These grid abbreviations are always shown together
 #. * and in order, e.g. "S M T W T F S".
-#. */
-#: ../js/ui/calendar.js:113
+#. 
+#: ../js/ui/calendar.js:100
 msgctxt "grid sunday"
 msgid "S"
 msgstr "일"
 
-#. Translators: Calendar grid abbreviation for Monday */
-#: ../js/ui/calendar.js:115
+#. Translators: Calendar grid abbreviation for Monday
+#: ../js/ui/calendar.js:102
 msgctxt "grid monday"
 msgid "M"
 msgstr "월"
 
-#. Translators: Calendar grid abbreviation for Tuesday */
-#: ../js/ui/calendar.js:117
+#. Translators: Calendar grid abbreviation for Tuesday
+#: ../js/ui/calendar.js:104
 msgctxt "grid tuesday"
 msgid "T"
 msgstr "화"
 
-#. Translators: Calendar grid abbreviation for Wednesday */
-#: ../js/ui/calendar.js:119
+#. Translators: Calendar grid abbreviation for Wednesday
+#: ../js/ui/calendar.js:106
 msgctxt "grid wednesday"
 msgid "W"
 msgstr "수"
 
-#. Translators: Calendar grid abbreviation for Thursday */
-#: ../js/ui/calendar.js:121
+#. Translators: Calendar grid abbreviation for Thursday
+#: ../js/ui/calendar.js:108
 msgctxt "grid thursday"
 msgid "T"
 msgstr "목"
 
-#. Translators: Calendar grid abbreviation for Friday */
-#: ../js/ui/calendar.js:123
+#. Translators: Calendar grid abbreviation for Friday
+#: ../js/ui/calendar.js:110
 msgctxt "grid friday"
 msgid "F"
 msgstr "금"
 
-#. Translators: Calendar grid abbreviation for Saturday */
-#: ../js/ui/calendar.js:125
+#. Translators: Calendar grid abbreviation for Saturday
+#: ../js/ui/calendar.js:112
 msgctxt "grid saturday"
 msgid "S"
 msgstr "토"
@@ -493,86 +502,86 @@ msgstr "토"
 #. * NOTE: These list abbreviations are normally not shown together
 #. * so they need to be unique (e.g. Tuesday and Thursday cannot
 #. * both be 'T').
-#. */
-#: ../js/ui/calendar.js:138
+#. 
+#: ../js/ui/calendar.js:125
 msgctxt "list sunday"
 msgid "Su"
 msgstr "일"
 
-#. Translators: Event list abbreviation for Monday */
-#: ../js/ui/calendar.js:140
+#. Translators: Event list abbreviation for Monday
+#: ../js/ui/calendar.js:127
 msgctxt "list monday"
 msgid "M"
 msgstr "월"
 
-#. Translators: Event list abbreviation for Tuesday */
-#: ../js/ui/calendar.js:142
+#. Translators: Event list abbreviation for Tuesday
+#: ../js/ui/calendar.js:129
 msgctxt "list tuesday"
 msgid "T"
 msgstr "화"
 
-#. Translators: Event list abbreviation for Wednesday */
-#: ../js/ui/calendar.js:144
+#. Translators: Event list abbreviation for Wednesday
+#: ../js/ui/calendar.js:131
 msgctxt "list wednesday"
 msgid "W"
 msgstr "수"
 
-#. Translators: Event list abbreviation for Thursday */
-#: ../js/ui/calendar.js:146
+#. Translators: Event list abbreviation for Thursday
+#: ../js/ui/calendar.js:133
 msgctxt "list thursday"
 msgid "Th"
 msgstr "목"
 
-#. Translators: Event list abbreviation for Friday */
-#: ../js/ui/calendar.js:148
+#. Translators: Event list abbreviation for Friday
+#: ../js/ui/calendar.js:135
 msgctxt "list friday"
 msgid "F"
 msgstr "금"
 
-#. Translators: Event list abbreviation for Saturday */
-#: ../js/ui/calendar.js:150
+#. Translators: Event list abbreviation for Saturday
+#: ../js/ui/calendar.js:137
 msgctxt "list saturday"
 msgid "S"
 msgstr "토"
 
-#: ../js/ui/calendar.js:453
+#: ../js/ui/calendar.js:462
 msgid "Previous month"
 msgstr "이전 달"
 
-#: ../js/ui/calendar.js:463
+#: ../js/ui/calendar.js:472
 msgid "Next month"
 msgstr "다음 달"
 
-#. Translators: Text to show if there are no events */
-#: ../js/ui/calendar.js:781
+#. Translators: Text to show if there are no events
+#: ../js/ui/calendar.js:811
 msgid "Nothing Scheduled"
 msgstr "일정이 없습니다"
 
-#. Translators: Shown on calendar heading when selected day occurs on current year */
-#: ../js/ui/calendar.js:799
+#. Translators: Shown on calendar heading when selected day occurs on current year
+#: ../js/ui/calendar.js:827
 msgctxt "calendar heading"
 msgid "%A, %B %d"
 msgstr "%B %d일 %A"
 
-#. Translators: Shown on calendar heading when selected day occurs on different year */
-#: ../js/ui/calendar.js:802
+#. Translators: Shown on calendar heading when selected day occurs on different year
+#: ../js/ui/calendar.js:830
 msgctxt "calendar heading"
 msgid "%A, %B %d, %Y"
 msgstr "%Y년 %B %d일 %A"
 
-#: ../js/ui/calendar.js:813
+#: ../js/ui/calendar.js:840
 msgid "Today"
 msgstr "오늘"
 
-#: ../js/ui/calendar.js:817
+#: ../js/ui/calendar.js:844
 msgid "Tomorrow"
 msgstr "내일"
 
-#: ../js/ui/calendar.js:828
+#: ../js/ui/calendar.js:855
 msgid "This week"
 msgstr "이번주"
 
-#: ../js/ui/calendar.js:836
+#: ../js/ui/calendar.js:863
 msgid "Next week"
 msgstr "다음주"
 
@@ -589,7 +598,7 @@ msgid "Removable Devices"
 msgstr "이동식 장치"
 
 #: ../js/ui/components/autorunManager.js:596
-#, javascript-format
+#, c-format
 msgid "Open with %s"
 msgstr "%s 프로그램으로 열기"
 
@@ -610,6 +619,7 @@ msgstr "다시 입력하십시오:"
 msgid "Connect"
 msgstr "연결"
 
+#. Cisco LEAP
 #: ../js/ui/components/networkAgent.js:231
 #: ../js/ui/components/networkAgent.js:243
 #: ../js/ui/components/networkAgent.js:271
@@ -618,6 +628,7 @@ msgstr "연결"
 msgid "Password: "
 msgstr "암호: "
 
+#. static WEP
 #: ../js/ui/components/networkAgent.js:236
 msgid "Key: "
 msgstr "키: "
@@ -639,7 +650,7 @@ msgid "Authentication required by wireless network"
 msgstr "무선 네트워크에서 인증이 필요합니다"
 
 #: ../js/ui/components/networkAgent.js:319
-#, javascript-format
+#, c-format
 msgid ""
 "Passwords or encryption keys are required to access the wireless network "
 "“%s”."
@@ -674,7 +685,7 @@ msgid "Mobile broadband network password"
 msgstr "휴대전화 네트워크 암호"
 
 #: ../js/ui/components/networkAgent.js:346
-#, javascript-format
+#, c-format
 msgid "A password is required to connect to “%s”."
 msgstr "“%s”에 연결하려면 암호가 필요합니다."
 
@@ -693,19 +704,23 @@ msgstr "인증"
 #. Translators: "that didn't work" refers to the fact that the
 #. * requested authentication was not gained; this can happen
 #. * because of an authentication error (like invalid password),
-#. * for instance. */
+#. * for instance.
 #: ../js/ui/components/polkitAgent.js:271 ../js/ui/shellMountOperation.js:383
 msgid "Sorry, that didn't work. Please try again."
 msgstr "죄송합니다. 동작하지 않았습니다. 다시 시도하십시오."
 
+#. FIXME: We don't have a 'chat room' icon (bgo #653737) use
+#. system-users for now as Empathy does.
 #: ../js/ui/components/telepathyClient.js:240
 msgid "Invitation"
 msgstr "초대"
 
+#. We got the TpContact
 #: ../js/ui/components/telepathyClient.js:300
 msgid "Call"
 msgstr "호출"
 
+#. We got the TpContact
 #: ../js/ui/components/telepathyClient.js:316
 msgid "File Transfer"
 msgstr "파일 전송"
@@ -722,87 +737,95 @@ msgstr "음소거 해제"
 msgid "Mute"
 msgstr "음소거"
 
-#. Translators: Time in 24h format */
+#. Translators: Time in 24h format
 #: ../js/ui/components/telepathyClient.js:953
-msgid "%H∶%M"
-msgstr "%H∶%M"
+msgid "%H\\u2236%M"
+msgstr "%H\\u2236%M"
 
 #. Translators: this is the word "Yesterday" followed by a
-#. time string in 24h format. i.e. "Yesterday, 14:30" */
+#. time string in 24h format. i.e. "Yesterday, 14:30"
 #: ../js/ui/components/telepathyClient.js:960
-msgid "Yesterday, %H∶%M"
-msgstr "어제, %H:%M"
+#, no-c-format
+msgid "Yesterday, %H\\u2236%M"
+msgstr "어제, %H\\u2236%M"
 
 #. Translators: this is the week day name followed by a time
-#. string in 24h format. i.e. "Monday, 14:30" */
+#. string in 24h format. i.e. "Monday, 14:30"
 #: ../js/ui/components/telepathyClient.js:967
-msgid "%A, %H∶%M"
-msgstr "%A, %H:%M"
+#, no-c-format
+msgid "%A, %H\\u2236%M"
+msgstr "%A, %H\\u2236%M"
 
 #. Translators: this is the month name and day number
 #. followed by a time string in 24h format.
-#. i.e. "May 25, 14:30" */
+#. i.e. "May 25, 14:30"
 #: ../js/ui/components/telepathyClient.js:974
-msgid "%B %d, %H∶%M"
-msgstr "%B %d일, %H∶%M"
+#, no-c-format
+msgid "%B %d, %H\\u2236%M"
+msgstr "%B %d, %H\\u2236%M"
 
 #. Translators: this is the month name, day number, year
 #. number followed by a time string in 24h format.
-#. i.e. "May 25 2012, 14:30" */
+#. i.e. "May 25 2012, 14:30"
 #: ../js/ui/components/telepathyClient.js:980
-msgid "%B %d %Y, %H∶%M"
-msgstr "%Y년 %B %d일, %H∶%M"
+#, no-c-format
+msgid "%B %d %Y, %H\\u2236%M"
+msgstr "%B %d %Y, %H\\u2236%M"
 
-#. Translators: Time in 24h format */
+#. Translators: Time in 24h format
 #: ../js/ui/components/telepathyClient.js:986
-msgid "%l∶%M %p"
-msgstr "%p %l∶%M"
+msgid "%l\\u2236%M %p"
+msgstr "%l\\u2236%M %p"
 
 #. Translators: this is the word "Yesterday" followed by a
-#. time string in 12h format. i.e. "Yesterday, 2:30 pm" */
+#. time string in 12h format. i.e. "Yesterday, 2:30 pm"
 #: ../js/ui/components/telepathyClient.js:993
-msgid "Yesterday, %l∶%M %p"
-msgstr "어제, %p %l∶%M"
+#, no-c-format
+msgid "Yesterday, %l\\u2236%M %p"
+msgstr "어제, %l\\u2236%M %p"
 
 #. Translators: this is the week day name followed by a time
-#. string in 12h format. i.e. "Monday, 2:30 pm" */
+#. string in 12h format. i.e. "Monday, 2:30 pm"
 #: ../js/ui/components/telepathyClient.js:1000
-msgid "%A, %l∶%M %p"
-msgstr "%A, %p %l∶%M"
+#, no-c-format
+msgid "%A, %l\\u2236%M %p"
+msgstr "%A, %l\\u2236%M %p"
 
 #. Translators: this is the month name and day number
 #. followed by a time string in 12h format.
-#. i.e. "May 25, 2:30 pm" */
+#. i.e. "May 25, 2:30 pm"
 #: ../js/ui/components/telepathyClient.js:1007
-msgid "%B %d, %l∶%M %p"
-msgstr "%B %d일, %p %l∶%M"
+#, no-c-format
+msgid "%B %d, %l\\u2236%M %p"
+msgstr "%B %d일, %l\\u2236%M %p"
 
 #. Translators: this is the month name, day number, year
 #. number followed by a time string in 12h format.
-#. i.e. "May 25 2012, 2:30 pm"*/
+#. i.e. "May 25 2012, 2:30 pm"
 #: ../js/ui/components/telepathyClient.js:1013
-msgid "%B %d %Y, %l∶%M %p"
-msgstr "%Y년 %B %d일, %p %l∶%M"
+#, no-c-format
+msgid "%B %d %Y, %l\\u2236%M %p"
+msgstr "%Y년 %B %d일, %l\\u2236%M %p"
 
 #. Translators: this is the other person changing their old IM name to their new
-#. IM name. */
+#. IM name.
 #: ../js/ui/components/telepathyClient.js:1045
-#, javascript-format
+#, c-format
 msgid "%s is now known as %s"
 msgstr "%s의 대화명이 이제 %s입니다"
 
 #. translators: argument is a room name like
-#. * room@jabber.org for example. */
+#. * room@jabber.org for example.
 #: ../js/ui/components/telepathyClient.js:1149
-#, javascript-format
+#, c-format
 msgid "Invitation to %s"
 msgstr "%s에 초대"
 
 #. translators: first argument is the name of a contact and the second
 #. * one the name of a room. "Alice is inviting you to join room@jabber.org
-#. * for example. */
+#. * for example.
 #: ../js/ui/components/telepathyClient.js:1157
-#, javascript-format
+#, c-format
 msgid "%s is inviting you to join %s"
 msgstr "%s 님이 %s에 입장하도록 초대합니다"
 
@@ -819,19 +842,19 @@ msgstr "거부"
 msgid "Accept"
 msgstr "허용"
 
-#. translators: argument is a contact name like Alice for example. */
+#. translators: argument is a contact name like Alice for example.
 #: ../js/ui/components/telepathyClient.js:1184
-#, javascript-format
+#, c-format
 msgid "Video call from %s"
 msgstr "%s에서 영상 호출"
 
-#. translators: argument is a contact name like Alice for example. */
+#. translators: argument is a contact name like Alice for example.
 #: ../js/ui/components/telepathyClient.js:1187
-#, javascript-format
+#, c-format
 msgid "Call from %s"
 msgstr "%s에서 호출"
 
-#. translators: this is a button label (verb), not a noun */
+#. translators: this is a button label (verb), not a noun
 #: ../js/ui/components/telepathyClient.js:1201
 msgid "Answer"
 msgstr "응답"
@@ -840,15 +863,15 @@ msgstr "응답"
 #. * the contact's alias and the second one is the
 #. * file name. The string will be something
 #. * like: "Alice is sending you test.ogg"
-#. */
+#. 
 #: ../js/ui/components/telepathyClient.js:1222
-#, javascript-format
+#, c-format
 msgid "%s is sending you %s"
 msgstr "%s님이 %s 파일을 보냅니다"
 
-#. To translators: The parameter is the contact's alias */
+#. To translators: The parameter is the contact's alias
 #: ../js/ui/components/telepathyClient.js:1251
-#, javascript-format
+#, c-format
 msgid "%s would like permission to see when you are online"
 msgstr "연결 상태인지 알 수 있는 권한을 %s님이 요청합니다"
 
@@ -946,18 +969,16 @@ msgstr "인증서가 보안에 취약한 알고리즘을 사용하거나 암호�
 msgid ""
 "The length of the server certificate, or the depth of the server certificate "
 "chain, exceed the limits imposed by the cryptography library"
-msgstr ""
-"서버 인증서의 길이, 또는 서버 인증서 체인의 단계가 암호화 라이브러리의 제한"
-"을 넘어갑니다."
+msgstr "서버 인증서의 길이, 또는 서버 인증서 체인의 단계가 암호화 라이브러리의 제한을 넘어갑니다."
 
 #: ../js/ui/components/telepathyClient.js:1383
 msgid "Internal error"
 msgstr "내부 오류"
 
 #. translators: argument is the account name, like
-#. * name@jabber.org for example. */
+#. * name@jabber.org for example.
 #: ../js/ui/components/telepathyClient.js:1393
-#, javascript-format
+#, c-format
 msgid "Unable to connect to %s"
 msgstr "%s에 연결할 수 없습니다"
 
@@ -969,7 +990,7 @@ msgstr "계정 보기"
 msgid "Unknown reason"
 msgstr "알 수 없는 이유"
 
-#: ../js/ui/ctrlAltTab.js:29 ../js/ui/viewSelector.js:154
+#: ../js/ui/ctrlAltTab.js:29 ../js/ui/viewSelector.js:155
 msgid "Windows"
 msgstr "창"
 
@@ -977,31 +998,33 @@ msgstr "창"
 msgid "Show Applications"
 msgstr "프로그램 표시"
 
+#. Translators: this is the name of the dock/favorites area on
+#. the left of the overview
 #: ../js/ui/dash.js:445
 msgid "Dash"
 msgstr "대시보드"
 
-#: ../js/ui/dateMenu.js:96
+#: ../js/ui/dateMenu.js:97
 msgid "Open Calendar"
 msgstr "달력 열기"
 
-#: ../js/ui/dateMenu.js:100
+#: ../js/ui/dateMenu.js:101
 msgid "Open Clocks"
 msgstr "시계 열기"
 
-#: ../js/ui/dateMenu.js:107
+#: ../js/ui/dateMenu.js:108
 msgid "Date & Time Settings"
 msgstr "날짜 및 시각 설정"
 
 #. Translators: This is the date format to use when the calendar popup is
 #. * shown - it is shown just below the time in the shell (e.g. "Tue 9:29 AM").
-#. */
-#: ../js/ui/dateMenu.js:204
+#. 
+#: ../js/ui/dateMenu.js:132
 msgid "%A %B %e, %Y"
 msgstr "%Y년 %B %e일 %A"
 
 #: ../js/ui/endSessionDialog.js:64
-#, javascript-format
+#, c-format
 msgctxt "title"
 msgid "Log Out %s"
 msgstr "%s 로그아웃"
@@ -1012,13 +1035,13 @@ msgid "Log Out"
 msgstr "로그아웃"
 
 #: ../js/ui/endSessionDialog.js:67
-#, javascript-format
+#, c-format
 msgid "%s will be logged out automatically in %d second."
 msgid_plural "%s will be logged out automatically in %d seconds."
 msgstr[0] "%s 사용자가 %d초 뒤에 자동으로 로그아웃합니다."
 
 #: ../js/ui/endSessionDialog.js:72
-#, javascript-format
+#, c-format
 msgid "You will be logged out automatically in %d second."
 msgid_plural "You will be logged out automatically in %d seconds."
 msgstr[0] "%d초 뒤에 자동으로 로그아웃합니다."
@@ -1039,7 +1062,7 @@ msgid "Install Updates & Power Off"
 msgstr "업데이트 설치 및 컴퓨터 끄기"
 
 #: ../js/ui/endSessionDialog.js:87
-#, javascript-format
+#, c-format
 msgid "The system will power off automatically in %d second."
 msgid_plural "The system will power off automatically in %d seconds."
 msgstr[0] "시스템이 %d초 뒤에 자동으로 꺼집니다."
@@ -1065,7 +1088,7 @@ msgid "Restart"
 msgstr "다시 시작"
 
 #: ../js/ui/endSessionDialog.js:105
-#, javascript-format
+#, c-format
 msgid "The system will restart automatically in %d second."
 msgid_plural "The system will restart automatically in %d seconds."
 msgstr[0] "시스템이 %d초 뒤에 자동으로 다시 시작합니다."
@@ -1076,8 +1099,9 @@ msgid "Restart & Install Updates"
 msgstr "다시 시작 및 업데이트 설치"
 
 #: ../js/ui/endSessionDialog.js:121
-#, javascript-format
-msgid "The system will automatically restart and install updates in %d second."
+#, c-format
+msgid ""
+"The system will automatically restart and install updates in %d second."
 msgid_plural ""
 "The system will automatically restart and install updates in %d seconds."
 msgstr[0] "시스템이 %d초 뒤에 자동으로 다시 시작하고 업데이트를 설치합니다."
@@ -1109,15 +1133,15 @@ msgstr "일부 프로그램이 동작 중이거나 저장하지 않은 작업이
 msgid "Other users are logged in."
 msgstr "다른 사용자가 로그인 중입니다."
 
-#. Translators: Remote here refers to a remote session, like a ssh login */
+#. Translators: Remote here refers to a remote session, like a ssh login
 #: ../js/ui/endSessionDialog.js:640
-#, javascript-format
+#, c-format
 msgid "%s (remote)"
 msgstr "%s (원격)"
 
-#. Translators: Console here refers to a tty like a VT console */
+#. Translators: Console here refers to a tty like a VT console
 #: ../js/ui/endSessionDialog.js:643
-#, javascript-format
+#, c-format
 msgid "%s (console)"
 msgstr "%s (콘솔)"
 
@@ -1126,100 +1150,116 @@ msgid "Install"
 msgstr "설치"
 
 #: ../js/ui/extensionDownloader.js:204
-#, javascript-format
+#, c-format
 msgid "Download and install “%s” from extensions.gnome.org?"
-msgstr ""
-"extensions.gnome.org 사이트에서 “%s” 확장을 다운로드해 설치하시겠습니까?"
+msgstr "extensions.gnome.org 사이트에서 “%s” 확장을 다운로드해 설치하시겠습니까?"
 
-#: ../js/ui/keyboard.js:692 ../js/ui/status/keyboard.js:523
+#: ../js/ui/extensionSystem.js:314
+#, c-format
+msgid "%d extension is out of date"
+msgid_plural "%d extensions are out of date"
+msgstr[0] "%d 확장이 업데이트되지 않았습니다"
+
+#: ../js/ui/extensionSystem.js:317
+msgid "You can visit http://extensions.gnome.org for updates"
+msgstr "http://extensions.gnome.org에서 업데이트할 수 있습니다"
+
+#: ../js/ui/keyboard.js:700 ../js/ui/status/keyboard.js:535
 msgid "Keyboard"
 msgstr "키보드"
 
-#: ../js/ui/lookingGlass.js:643
+#: ../js/ui/lookingGlass.js:645
 msgid "No extensions installed"
 msgstr "확장을 설치하지 않았습니다"
 
-#. Translators: argument is an extension UUID. */
-#: ../js/ui/lookingGlass.js:697
-#, javascript-format
+#. Translators: argument is an extension UUID.
+#: ../js/ui/lookingGlass.js:699
+#, c-format
 msgid "%s has not emitted any errors."
 msgstr "%s에서 발생한 에러가 없습니다."
 
-#: ../js/ui/lookingGlass.js:703
+#: ../js/ui/lookingGlass.js:705
 msgid "Hide Errors"
 msgstr "오류 숨기기"
 
-#: ../js/ui/lookingGlass.js:707 ../js/ui/lookingGlass.js:767
+#: ../js/ui/lookingGlass.js:709 ../js/ui/lookingGlass.js:769
 msgid "Show Errors"
 msgstr "오류 보이기"
 
-#: ../js/ui/lookingGlass.js:716 ../js/ui/status/location.js:71
+#: ../js/ui/lookingGlass.js:718 ../js/ui/status/location.js:71
 #: ../js/ui/status/location.js:176
 msgid "Enabled"
 msgstr "사용"
 
 #. Translators: this is for a network device that cannot be activated
-#. because it's disabled by rfkill (airplane mode) */
+#. because it's disabled by rfkill (airplane mode)
 #. translators:
 #. * The device has been disabled
-#: ../js/ui/lookingGlass.js:719 ../js/ui/status/location.js:179
+#: ../js/ui/lookingGlass.js:721 ../js/ui/status/location.js:179
 #: ../js/ui/status/network.js:592 ../src/gvc/gvc-mixer-control.c:1830
 msgid "Disabled"
 msgstr "사용 않음"
 
-#: ../js/ui/lookingGlass.js:721
+#: ../js/ui/lookingGlass.js:723
 msgid "Error"
 msgstr "오류"
 
-#: ../js/ui/lookingGlass.js:723
+#: ../js/ui/lookingGlass.js:725
 msgid "Out of date"
 msgstr "오래 된 버전"
 
-#: ../js/ui/lookingGlass.js:725
+#: ../js/ui/lookingGlass.js:727
 msgid "Downloading"
 msgstr "다운로드 중"
 
-#: ../js/ui/lookingGlass.js:749
+#: ../js/ui/lookingGlass.js:751
 msgid "View Source"
 msgstr "소스 보기"
 
-#: ../js/ui/lookingGlass.js:758
+#: ../js/ui/lookingGlass.js:760
 msgid "Web Page"
 msgstr "웹페이지"
 
-#: ../js/ui/messageTray.js:1326
+#: ../js/ui/messageTray.js:1334
 msgid "Open"
 msgstr "열기"
 
-#: ../js/ui/messageTray.js:1333
+#: ../js/ui/messageTray.js:1341
 msgid "Remove"
 msgstr "제거"
 
-#: ../js/ui/messageTray.js:1630
+#: ../js/ui/messageTray.js:1638
 msgid "Notifications"
 msgstr "알림"
 
-#: ../js/ui/messageTray.js:1637
+#: ../js/ui/messageTray.js:1645
 msgid "Clear Messages"
 msgstr "메시지 지우기"
 
-#: ../js/ui/messageTray.js:1656
+#: ../js/ui/messageTray.js:1664
 msgid "Notification Settings"
 msgstr "알림 설정"
 
-#: ../js/ui/messageTray.js:1709
+#: ../js/ui/messageTray.js:1717
 msgid "Tray Menu"
 msgstr "트레이 메뉴"
 
-#: ../js/ui/messageTray.js:1926
+#: ../js/ui/messageTray.js:1941
 msgid "No Messages"
 msgstr "메시지 없음"
 
-#: ../js/ui/messageTray.js:1968
+#: ../js/ui/messageTray.js:1988
 msgid "Message Tray"
 msgstr "메시지 트레이"
 
-#: ../js/ui/messageTray.js:2971
+#: ../js/ui/messageTray.js:2447 ../js/ui/overviewControls.js:483
+#: ../js/ui/screenShield.js:151
+#, c-format
+msgid "%d new message"
+msgid_plural "%d new messages"
+msgstr[0] "새 메시지 %d개"
+
+#: ../js/ui/messageTray.js:3017
 msgid "System Information"
 msgstr "시스템 정보"
 
@@ -1227,12 +1267,6 @@ msgstr "시스템 정보"
 msgctxt "program"
 msgid "Unknown"
 msgstr "알 수 없음"
-
-#: ../js/ui/overviewControls.js:482 ../js/ui/screenShield.js:151
-#, javascript-format
-msgid "%d new message"
-msgid_plural "%d new messages"
-msgstr[0] "새 메시지 %d개"
 
 #: ../js/ui/overview.js:84
 msgid "Undo"
@@ -1245,7 +1279,7 @@ msgstr "개요"
 #. Translators: this is the text displayed
 #. in the search entry when no search is
 #. active; it should not exceed ~30
-#. characters. */
+#. characters.
 #: ../js/ui/overview.js:246
 msgid "Type to search…"
 msgstr "검색하려면 입력하십시오…"
@@ -1255,15 +1289,20 @@ msgid "Quit"
 msgstr "끝내기"
 
 #. Translators: If there is no suitable word for "Activities"
-#. in your language, you can use the word for "Overview". */
-#: ../js/ui/panel.js:567
+#. in your language, you can use the word for "Overview".
+#: ../js/ui/panel.js:574
 msgid "Activities"
 msgstr "현재 활동"
 
-#: ../js/ui/panel.js:918
+#: ../js/ui/panel.js:925
 msgid "Top Bar"
 msgstr "위 막대"
 
+#. Translators: this MUST be either "toggle-switch-us"
+#. (for toggle switches containing the English words
+#. "ON" and "OFF") or "toggle-switch-intl" (for toggle
+#. switches containing "◯" and "|"). Other values will
+#. simply result in invisible toggle switches.
 #: ../js/ui/popupMenu.js:269
 msgid "toggle-switch-us"
 msgstr "toggle-switch-intl"
@@ -1281,38 +1320,45 @@ msgid "Restarting…"
 msgstr "다시 시작하는 중…"
 
 #. Translators: This is a time format for a date in
-#. long format */
+#. long format
 #: ../js/ui/screenShield.js:88
 msgid "%A, %B %d"
 msgstr "%B %d일 %A"
 
 #: ../js/ui/screenShield.js:153
-#, javascript-format
+#, c-format
 msgid "%d new notification"
 msgid_plural "%d new notifications"
 msgstr[0] "새 알림 %d개"
 
-#: ../js/ui/screenShield.js:472 ../js/ui/status/system.js:345
+#: ../js/ui/screenShield.js:473 ../js/ui/status/system.js:345
 msgid "Lock"
 msgstr "잠그기"
 
-#: ../js/ui/screenShield.js:706
+#: ../js/ui/screenShield.js:709
 msgid "GNOME needs to lock the screen"
 msgstr "그놈에서 화면을 잠궈야 합니다"
 
-#: ../js/ui/screenShield.js:833 ../js/ui/screenShield.js:1304
+#. We could not become modal, so we can't activate the
+#. screenshield. The user is probably very upset at this
+#. point, but any application using global grabs is broken
+#. Just tell him to stop using this app
+#. 
+#. XXX: another option is to kick the user into the gdm login
+#. screen, where we're not affected by grabs
+#: ../js/ui/screenShield.js:836 ../js/ui/screenShield.js:1312
 msgid "Unable to lock"
 msgstr "잠글 수 없습니다"
 
-#: ../js/ui/screenShield.js:834 ../js/ui/screenShield.js:1305
+#: ../js/ui/screenShield.js:837 ../js/ui/screenShield.js:1313
 msgid "Lock was blocked by an application"
 msgstr "프로그램이 잠금을 막았습니다"
 
-#: ../js/ui/search.js:594
+#: ../js/ui/search.js:611
 msgid "Searching…"
 msgstr "검색하는 중…"
 
-#: ../js/ui/search.js:596
+#: ../js/ui/search.js:613
 msgid "No results."
 msgstr "결과가 없습니다."
 
@@ -1384,6 +1430,8 @@ msgstr "고대비"
 msgid "Large Text"
 msgstr "큰 글자"
 
+#. The Bluetooth menu only appears when Bluetooth is in use,
+#. so just statically build it with a "Turn Off" menu item.
 #: ../js/ui/status/bluetooth.js:49
 msgid "Bluetooth"
 msgstr "블루투스"
@@ -1400,7 +1448,7 @@ msgid "Bluetooth Settings"
 msgstr "블루투스 설정"
 
 #: ../js/ui/status/bluetooth.js:104
-#, javascript-format
+#, c-format
 msgid "%d Connected Device"
 msgid_plural "%d Connected Devices"
 msgstr[0] "연결된 장치 %d개"
@@ -1413,7 +1461,7 @@ msgstr "연결되지 않음"
 msgid "Brightness"
 msgstr "밝기"
 
-#: ../js/ui/status/keyboard.js:547
+#: ../js/ui/status/keyboard.js:559
 msgid "Show Keyboard Layout"
 msgstr "키보드 배치 표시"
 
@@ -1451,7 +1499,7 @@ msgid "Connected"
 msgstr "연결됨"
 
 #. Translators: this is for network devices that are physically present but are not
-#. under NetworkManager's control (and thus cannot be used in the menu) */
+#. under NetworkManager's control (and thus cannot be used in the menu)
 #: ../js/ui/status/network.js:463
 msgid "Unmanaged"
 msgstr "관리되지 않음"
@@ -1464,19 +1512,19 @@ msgstr "연결 끊는 중"
 msgid "Connecting"
 msgstr "연결하는 중"
 
-#. Translators: this is for network connections that require some kind of key or password */
+#. Translators: this is for network connections that require some kind of key or password
 #: ../js/ui/status/network.js:474
 msgid "Authentication required"
 msgstr "인증 필요"
 
 #. Translators: this is for devices that require some kind of firmware or kernel
-#. module, which is missing */
+#. module, which is missing
 #: ../js/ui/status/network.js:482
 msgid "Firmware missing"
 msgstr "펌웨어 없음"
 
 #. Translators: this is for a network device that cannot be activated (for example it
-#. is disabled by rfkill, or it has no coverage */
+#. is disabled by rfkill, or it has no coverage
 #: ../js/ui/status/network.js:486
 msgid "Unavailable"
 msgstr "사용 불가"
@@ -1561,7 +1609,7 @@ msgstr "핫스팟 사용 중"
 msgid "connecting..."
 msgstr "연결하는 중..."
 
-#. Translators: this is for network connections that require some kind of key or password */
+#. Translators: this is for network connections that require some kind of key or password
 #: ../js/ui/status/network.js:1412
 msgid "authentication required"
 msgstr "인증 필요"
@@ -1598,19 +1646,23 @@ msgstr "전원 설정"
 msgid "Fully Charged"
 msgstr "완전 충전"
 
+#. 0 is reported when UPower does not have enough data
+#. to estimate battery life
 #: ../js/ui/status/power.js:72 ../js/ui/status/power.js:78
 msgid "Estimating…"
 msgstr "예상치 계산 중…"
 
+#. Translators: this is <hours>:<minutes> Remaining (<percentage>)
 #: ../js/ui/status/power.js:86
-#, javascript-format
-msgid "%d∶%02d Remaining (%d%%)"
-msgstr "%d∶%02d 남음(%d%%)"
+#, c-format
+msgid "%d\\u2236%02d Remaining (%d%%)"
+msgstr "%d\\u2236%02d 남음 (%d%%)"
 
+#. Translators: this is <hours>:<minutes> Until Full (<percentage>)
 #: ../js/ui/status/power.js:91
-#, javascript-format
-msgid "%d∶%02d Until Full (%d%%)"
-msgstr "충전까지 %d:%02d(%d%%)"
+#, c-format
+msgid "%d\\u2236%02d Until Full (%d%%)"
+msgstr "충전까지 %d\\u2236%02d (%d%%)"
 
 #: ../js/ui/status/power.js:119
 msgid "UPS"
@@ -1620,6 +1672,9 @@ msgstr "UPS"
 msgid "Battery"
 msgstr "배터리"
 
+#. The menu only appears when airplane mode is on, so just
+#. statically build it as if it was on, rather than dynamically
+#. changing the menu contents.
 #: ../js/ui/status/rfkill.js:83
 msgid "Airplane Mode"
 msgstr "비행기 모드"
@@ -1670,16 +1725,16 @@ msgstr "다른 사용자로 로그인"
 msgid "Unlock Window"
 msgstr "창 잠금 풀기"
 
-#: ../js/ui/viewSelector.js:158
+#: ../js/ui/viewSelector.js:159
 msgid "Applications"
 msgstr "프로그램"
 
-#: ../js/ui/viewSelector.js:162
+#: ../js/ui/viewSelector.js:163
 msgid "Search"
 msgstr "검색"
 
 #: ../js/ui/windowAttentionHandler.js:19
-#, javascript-format
+#, c-format
 msgid "“%s” is ready"
 msgstr "“%s” 프로그램이 준비되었습니다"
 
@@ -1689,7 +1744,7 @@ msgstr "이 디스플레이 설정을 유지하시겠습니까?"
 
 #. Translators: this and the following message should be limited in lenght,
 #. to avoid ellipsizing the labels.
-#. */
+#. 
 #: ../js/ui/windowManager.js:84
 msgid "Revert Settings"
 msgstr "설정 되돌리기"
@@ -1699,7 +1754,7 @@ msgid "Keep Changes"
 msgstr "바뀐 사항 유지"
 
 #: ../js/ui/windowManager.js:107
-#, javascript-format
+#, c-format
 msgid "Settings changes will revert in %d second"
 msgid_plural "Settings changes will revert in %d seconds"
 msgstr[0] "바뀐 설정을 %d초 후에 되돌립니다"
@@ -1769,19 +1824,19 @@ msgid "System Sounds"
 msgstr "시스템 소리"
 
 # 커맨드라인 옵션 설명
-#: ../src/main.c:373
+#: ../src/main.c:381
 msgid "Print version"
 msgstr "버전을 표시합니다"
 
-#: ../src/main.c:379
+#: ../src/main.c:387
 msgid "Mode used by GDM for login screen"
 msgstr "GDM에서 로그인 화면에 사용할 모드"
 
-#: ../src/main.c:385
+#: ../src/main.c:393
 msgid "Use a specific mode, e.g. \"gdm\" for login screen"
 msgstr "특정 모드 사용. 예를 들어 로그인 화면에 대해 \"gdm\""
 
-#: ../src/main.c:391
+#: ../src/main.c:399
 msgid "List possible modes"
 msgstr "가능한 모드 목록 표시"
 
@@ -1801,42 +1856,3 @@ msgstr "빈 암호를 쓸 수 없습니다"
 #: ../src/shell-polkit-authentication-agent.c:346
 msgid "Authentication dialog was dismissed by the user"
 msgstr "인증 대화 창을 사용자가 닫았습니다"
-
-#~ msgid "The maximum accuracy level of location."
-#~ msgstr "위치의 정확도 단계."
-
-#~ msgid ""
-#~ "Configures the maximum level of location accuracy applications are "
-#~ "allowed to see. Valid options are 'off' (disable location tracking), "
-#~ "'country', 'city', 'neighborhood', 'street', and 'exact' (typically "
-#~ "requires GPS receiver). Please keep in mind that this only controls what "
-#~ "GeoClue will allow applications to see and they can find user's location "
-#~ "on their own using network resources (albeit with street-level accuracy "
-#~ "at best)."
-#~ msgstr ""
-#~ "프로그램에서 확인할 수 있는 위치의 정확도 최대 단계를 설정합니다. 쓸 수 있"
-#~ "는 값은 'off'(위치 추적 기능 사용하지 않음), 'country'(국가), 'city'(도"
-#~ "시), 'neighborhood'(이웃), 'street'(길), 'exact'(정확한 위치, 보통 GPS 리"
-#~ "시버 필요)입니다. 단 이 옵션은 GeoClue를 사용하는 프로그램이 쓸 수 있는 위"
-#~ "치 정보만 설정합니다. 그래서 응용 프로그램이 자체적으로 네트워크를 사용해 "
-#~ "사용자 위치를 알아낼 수는 있습니다(이 경우 보통 길 위치 정도만 알아낼 수 "
-#~ "있지만)."
-
-#~ msgid "Arrangement of buttons on the titlebar"
-#~ msgstr "제목 표시줄의 단추 순서"
-
-#~ msgid ""
-#~ "This key overrides the key in org.gnome.desktop.wm.preferences when "
-#~ "running GNOME Shell."
-#~ msgstr ""
-#~ "그놈 셸을 실행할 때 org.gnome.desktop.wm.preferences의 키 대신 사용됩니다."
-
-#~ msgid "Extension"
-#~ msgstr "확장"
-
-#~ msgid "Select an extension to configure using the combobox above."
-#~ msgstr "위의 콤보상자를 사용해 설정할 확장을 선택하십시오."
-
-# FIXME: 그냥 직접 포맷을 번역하지 왜 이렇게?
-#~ msgid "calendar:MY"
-#~ msgstr "calendar:YM"
