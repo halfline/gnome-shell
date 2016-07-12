@@ -996,7 +996,9 @@ _shell_app_set_app_info (ShellApp        *app,
                          GDesktopAppInfo *info)
 {
   g_clear_object (&app->info);
-  app->info = g_object_ref (info);
+
+  if (info)
+    app->info = g_object_ref (info);
 
   if (app->name_collation_key != NULL)
     g_free (app->name_collation_key);
