@@ -97,8 +97,6 @@ const WindowMenu = new Lang.Class({
             if (window.is_always_on_all_workspaces())
                 item.setSensitive(false);
 
-            let nWorkspaces = global.screen.n_workspaces;
-
             if (!isSticky) {
                 let workspace = window.get_workspace();
                 if (workspace != workspace.get_neighbor(Meta.MotionDirection.LEFT)) {
@@ -120,6 +118,22 @@ const WindowMenu = new Lang.Class({
                      this.addAction(_("Move to Workspace Down"), Lang.bind(this, function(event) {
                         window.change_workspace(workspace.get_neighbor(Meta.MotionDirection.DOWN));
                     }));
+                }
+
+                let nWorkspaces = global.screen.n_workspaces;
+                if (nWorkspaces > 1 && !Meta.prefs_get_dynamic_workspaces()) {
+                    item = new PopupMenu.PopupSubMenuMenuItem(_("Move to another workspace"));
+                    this.addMenuItem(item);
+
+                    let currentIndex = global.screen.get_active_workspace_index();
+                    for (let i = 0; i < nWorkspaces; i++) {
+                        let index = i;
+                        let name = Meta.prefs_get_workspace_name(i);
+                        let subitem = item.menu.addAction(name, Lang.bind(this, function() {
+                            window.change_workspace_by_index(index, false);
+                        }));
+                        subitem.setSensitive(currentIndex != i);
+                    }
                 }
             }
         }
