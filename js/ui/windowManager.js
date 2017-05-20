@@ -1331,13 +1331,11 @@ const WindowManager = new Lang.Class({
         actorClone.set_size(oldFrameRect.width, oldFrameRect.height);
         Main.uiGroup.add_actor(actorClone);
 
-        let rect = change == Meta.SizeChange.FULLSCREEN ? oldFrameRect : null;
-
         if (this._clearFullscreenInfo(actor))
             this._shellwm.completed_size_change(actor);
 
         actor.__fullscreenInfo = { clone: actorClone,
-                                   oldRect: rect };
+                                   oldRect: oldFrameRect };
     },
 
     _sizeChangedWindow: function(shellwm, actor) {
@@ -1366,14 +1364,8 @@ const WindowManager = new Lang.Class({
                            transition: 'easeOutQuad'
                          });
 
-        let monitor = Main.layoutManager.monitors[actor.meta_window.get_monitor()];
-        if (sourceRect) {
-            actor.translation_x = sourceRect.x - monitor.x;
-            actor.translation_y = sourceRect.y - monitor.y;
-        } else {
-            actor.translation_x = -(targetRect.x - monitor.x);
-            actor.translation_y = -(targetRect.y - monitor.y);
-        }
+        actor.translation_x = -(targetRect.x - sourceRect.x);
+        actor.translation_y = -(targetRect.y - sourceRect.y);
 
         // Now set scale the actor to size it as the clone.
         actor.scale_x = 1 / scaleX;
