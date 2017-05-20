@@ -1348,9 +1348,10 @@ const WindowManager = new Lang.Class({
 
         let actorClone = actor.__fullscreenInfo.clone;
         let targetRect = actor.meta_window.get_frame_rect();
+        let sourceRect = actor.__fullscreenInfo.oldRect;
 
-        let scaleX = targetRect.width / actorClone.width;
-        let scaleY = targetRect.height / actorClone.height;
+        let scaleX = targetRect.width / sourceRect.width;
+        let scaleY = targetRect.height / sourceRect.height;
 
         this._resizing.push(actor);
 
@@ -1366,7 +1367,6 @@ const WindowManager = new Lang.Class({
                          });
 
         let monitor = Main.layoutManager.monitors[actor.meta_window.get_monitor()];
-        let sourceRect = actor.__fullscreenInfo.oldRect;
         if (sourceRect) {
             actor.translation_x = sourceRect.x - monitor.x;
             actor.translation_y = sourceRect.y - monitor.y;
