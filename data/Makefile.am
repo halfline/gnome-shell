@@ -72,6 +72,9 @@ dist_theme_files =						\
 		$(SASS) --sourcemap=none -f -q --update $<; \
 	fi
 
+themedir = $(pkgdatadir)/theme
+dist_theme_DATA = theme/process-working.svg
+
 resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir)/theme --generate-dependencies $(srcdir)/gnome-shell-theme.gresource.xml)
 gnome-shell-theme.gresource: gnome-shell-theme.gresource.xml $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir)/theme $<
