@@ -181,9 +181,7 @@ st_bin_dispose (GObject *gobject)
 {
   StBinPrivate *priv = st_bin_get_instance_private (ST_BIN (gobject));
 
-  if (priv->child)
-    clutter_actor_destroy (priv->child);
-  g_assert (priv->child == NULL);
+  g_clear_pointer (&priv->child, clutter_actor_destroy);
 
   G_OBJECT_CLASS (st_bin_parent_class)->dispose (gobject);
 }
