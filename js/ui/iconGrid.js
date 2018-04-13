@@ -268,7 +268,7 @@ var IconGrid = new Lang.Class({
         this._padWithSpacing = params.padWithSpacing;
 
         this.topPadding = 0;
-        this.bottomPadding = 0;
+        this.bottomPadding = 20;
         this.rightPadding = 0;
         this.leftPadding = 0;
 
