@@ -811,6 +811,7 @@ var LoginDialog = new Lang.Class({
     },
 
     _resetGreeterProxy() {
+        log("greeter proxy reset: " + (new Error()).stack);
         if (GLib.getenv('GDM_GREETER_TEST') != '1') {
             if (this._greeter) {
                 this._greeter.run_dispose();
@@ -1145,6 +1146,7 @@ var LoginDialog = new Lang.Class({
     },
 
     _onDestroy() {
+        log("login dialog destroyed: " + (new Error()).stack);
         if (this._userManagerLoadedId) {
             this._userManager.disconnect(this._userManagerLoadedId);
             this._userManagerLoadedId = 0;
